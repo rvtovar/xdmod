@@ -77,7 +77,8 @@
             "exit_state": "j.exit_state",
             "cpu_req": "j.cpu_req",
             "mem_req": "j.mem_req",
-            "timelimit": "j.timelimit"
+            "timelimit": "j.timelimit",
+            "local_charge_su": "${local_charge_su}"
         },
         "joins": [
             {
@@ -166,6 +167,10 @@
             {
                 "name": "start_time_ts_statement",
                 "file": "hpcdb-modw-cloud/start_time_ts_calc.sql"
+            },
+            {
+                "name": "local_charge_su",
+                "file": "local_charge_su.sql"
             }
         ]
     },
@@ -198,7 +203,7 @@
             "end_time_ts": "end_time_ts",
             "start_day_id": "start_day_id",
             "end_day_id": "end_day_id",
-            "#local_charge_su": "local_charge_su",
+            "local_charge_su": "local_charge_su",
             "#adjusted_charge_su": "adjusted_charge_su",
             "#local_charge_xdsu": "local_charge_xdsu",
             "#adjusted_charge_xdsu": "adjusted_charge_xdsu",
