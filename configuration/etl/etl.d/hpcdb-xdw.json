@@ -164,7 +164,8 @@
         "description": "Post-updates for HPCDB job records",
         "class": "ExecuteSql",
         "sql_file_list": [
-            "jobs/job-record-hpc-post-ingest.sql"
+            "jobs/job-record-hpc-post-ingest.sql",
+            "jobs/job-record-local_charge-post-ingest.sql"
         ]
     }]
 }

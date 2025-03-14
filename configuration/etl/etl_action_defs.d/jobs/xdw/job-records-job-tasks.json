@@ -78,7 +78,8 @@
             "cpu_req": "j.cpu_req",
             "mem_req": "j.mem_req",
             "timelimit": "j.timelimit",
-            "local_charge_su": "${local_charge_su}"
+            "#": "This is dependent on Cpu_time and Gpu_time so it will be calculated in a post-processing step",
+            "local_charge_su": 0
         },
         "joins": [
             {
@@ -167,10 +168,6 @@
             {
                 "name": "start_time_ts_statement",
                 "file": "hpcdb-modw-cloud/start_time_ts_calc.sql"
-            },
-            {
-                "name": "local_charge_su",
-                "file": "local_charge_su.sql"
             }
         ]
     },
