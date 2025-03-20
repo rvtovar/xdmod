@@ -1,7 +1,7 @@
 UPDATE
     ${DESTINATION_SCHEMA}.job_records records
     JOIN
-    ${DESTINATION_SCHEMA}.resourcefact rf ON records.resourcetype_id = rf.resourcetype_id
+    ${DESTINATION_SCHEMA}.resourcefact rf ON records.resource_id = rf.id
     JOIN
     ${DESTINATION_SCHEMA}.resource_allocation_type rat ON rf.resource_allocation_type_id = rat.resource_allocation_type_id
     JOIN
