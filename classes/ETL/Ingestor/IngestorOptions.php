@@ -1,4 +1,5 @@
 <?php
+
 /* ==========================================================================================
  * Options (with defaults) supported by all ingestors.  Options specifically defined in this class
  * are available and may have verification performed when they are set.  Additional options may be
@@ -19,7 +20,6 @@ use Exception;
 
 class IngestorOptions extends aOptions
 {
-
     /* ------------------------------------------------------------------------------------------
      * Constructor. Optionally initialize the options using key/value pairs from an associative array
      *
@@ -95,6 +95,9 @@ class IngestorOptions extends aOptions
             // INFILE...REPLACE INTO instead.
             "force_load_data_infile_replace_into" => false,
 
+            // Character set override to use when loading data via a file.
+            "load_data_infile_character_set" => null,
+
             // Hide all SQL warnings returned by the database.
             "hide_sql_warnings" => false,
 
@@ -119,7 +122,7 @@ class IngestorOptions extends aOptions
     {
         // Perform input verificaiton and possibly transformation
 
-        switch ( $property ) {
+        switch ($property) {
 
             case 'buffered_query':
             case 'optimize_query':
@@ -129,18 +132,18 @@ class IngestorOptions extends aOptions
             case 'hide_sql_warnings':
                 $origValue = $value;
                 $value = \xd_utilities\filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-                if ( null === $value ) {
+                if (null === $value) {
                     $msg = get_class($this) . ": '$property' must be a boolean (type = " . gettype($origValue) . ")";
                     throw new Exception($msg);
                 }
                 break;
 
             case 'hide_sql_warning_codes':
-                $value = ( is_array($value) ? $value : array($value) );
-                foreach ( $value as &$v ) {
+                $value = (is_array($value) ? $value : array($value));
+                foreach ($value as &$v) {
                     $origValue = $v;
                     $v = \xd_utilities\filter_var($v, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-                    if ( null === $v ) {
+                    if (null === $v) {
                         $msg = get_class($this) . ": '$property' must be an integer or array of integers (type = " . gettype($origValue) . ")";
                         throw new Exception($msg);
                     }
@@ -150,9 +153,9 @@ class IngestorOptions extends aOptions
 
             case 'include_only_resource_codes':
             case 'exclude_resource_codes':
-                $value = ( is_array($value) ? $value : array($value) );
-                foreach ( $value as $v ) {
-                    if ( ! is_string($v) ) {
+                $value = (is_array($value) ? $value : array($value));
+                foreach ($value as $v) {
+                    if (! is_string($v)) {
                         $msg = get_class($this) . ": '$property' must be a string or array of strings (type = " . gettype($v) . ")";
                         throw new Exception($msg);
                     }
@@ -162,7 +165,7 @@ class IngestorOptions extends aOptions
             case 'utility':
             case 'source':
             case 'destination':
-                if ( ! is_string($value) ) {
+                if (! is_string($value)) {
                     $msg = get_class($this) . ": '$property' must be a string (type = " . gettype($value) . ")";
                     throw new Exception($msg);
                 }

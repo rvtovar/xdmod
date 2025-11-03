@@ -24,7 +24,7 @@ confirmFileWrite yes
 enterToContinue
 
 selectMenuOption 2
-answerQuestion {DB Hostname or IP} localhost
+answerQuestion {DB Hostname or IP} nairr_db
 answerQuestion {DB Port} 3306
 answerQuestion {DB Username} xdmod
 providePassword {DB Password:} xdmod123
